@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEAST</title>
+    <style>
+        body {
+            color: white;
+            background-color: black;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .light-mode {
+            color: black;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>SEO and Core Web Vitals</h2>
+    <p>SEO = Search Engine optimization</p>
+    <p>CLS Cumulative Layout Shift</p>
+    <p>Basically letssay usne glti ne order pr click kiya lkn wo canccel kr rha tha to wo hua ni page load hote hote kitna shift hota he</p>
+    <p>LCP Largest Contentful Paint</p>
+    <p>Biggest element of website kitni der me load ho rha he</p>
+    <p>FID First Input Delay</p>
+    <p>Kisi input dene me kitna time le rha he</p>
+    <p>Use Lighthouse feature in Chrome</p>
+
+    <button id="modeToggle" onclick="toggleMode()">Dark Mode</button>
+
+    <script>
+        function toggleMode() {
+            var body = document.body;
+            var button = document.getElementById("modeToggle");
+            if (body.classList.contains("light-mode")) {
+                body.classList.remove("light-mode");
+                button.textContent = "Light Mode";
+            } else {
+                body.classList.add("light-mode");
+                button.textContent = "Dark Mode";
+            }
+        }
+    </script>
+</body>
+</html>

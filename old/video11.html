@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline External and Internal css</title>
+
+</head>
+<body>
+    <h1>Your Pakistani Bro</h1>
+<link rel="stylesheet" href="style11.css">
+<button id="modeToggle" onclick="toggleMode()">
+<img id="modeImage" width="22" src="mode-light-icon-512x512-yuubs6qt.png" alt="">
+</button>
+
+<script>
+    function toggleMode() {
+        var body = document.body;
+        var image = document.getElementById("modeImage");
+
+        if (body.classList.contains("light-mode")) {
+            body.classList.remove("light-mode");
+            image.src = "mode-light-icon-512x512-yuubs6qt.png"; // Change image source to dark mode
+        } else {
+            body.classList.add("light-mode");
+            image.src = "free-night-mode-2-475098 (1).webp"; // Change image source to light mode
+        }
+    }
+</script>
+</body>
+</html>

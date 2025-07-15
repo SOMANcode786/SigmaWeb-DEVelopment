@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>entities,Code tag and more...</title>
+    <style>
+    body {
+        color: white;
+        background-color: black;
+        transition: background-color 0.5s, color 0.5s;
+    }
+    .light-mode {
+        color: black;
+        background-color: white;
+    }
+    code{
+margin: auto;
+
+    }
+    #modeToggle{
+        background-color: teal;
+    color: aliceblue;
+    border-radius: 10%;
+    padding: 1px;
+    }
+    </style>
+</head>
+<body>
+    this is the code for paragraph
+    <p></p>
+
+    see the website will se this as a simple
+    code and will not show it to solve this
+    we use entities
+    this is the code for paragraph these are for reseved characters
+   <pre>
+    &lt;p&gt;&lt;/p&gt;
+</pre>
+    <pre>
+
+in this spaces will be considered
+   see   the   space   is also   added
+</pre>
+
+<pre>
+    <code>
+        &lt;!DOCTYPE html&gt;
+        &lt;html lang="en"&gt;
+        &lt;head&gt;
+            &lt;meta charset="UTF-8"&gt;
+            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+            &lt;title&gt;Document&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;This is 1st heading&lt;/h1&gt;
+        
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, doloremque. Corrupti accusamus eius illum illo quo magni sequi eaque voluptatem earum magnam! Distinctio nobis provident assumenda enim commodi eius corrupti.&lt;/p&gt;
+        &lt;!-- we can also give inline css like below --&gt;
+        &lt;p style="background-color: blue;"&gt;styLorem ipsum, dolor sit amet consectetur adipisicing elit. Rem sapiente magnam ex, officia, a ipsa vel exercitationem sit hic totam aperiam odio consequuntur facilis illo corporis iste alias sint quidem!&lt;/p&gt;
+        
+        &lt;/body&gt;
+        &lt;/html&gt; 
+<!--Remember to change the &gt; and &lt;--> 
+</code>
+</pre>
+
+<button id="modeToggle" onclick="toggleMode()">Dark Mode</button>
+
+<script>
+    function toggleMode() {
+        var body = document.body;
+        var button = document.getElementById("modeToggle");
+        if (body.classList.contains("light-mode")) {
+            body.classList.remove("light-mode");
+            button.textContent = "Light Mode";
+        } else {
+            body.classList.add("light-mode");
+            button.textContent = "Dark Mode";
+        }
+    }
+</script>
+
+
+
+</body>
+
+
+
+</html>

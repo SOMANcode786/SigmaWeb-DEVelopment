@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Tags</title>
+    <style>
+        body {
+            color: white;
+            background-color: black;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .light-mode {
+            color: black;
+            background-color: white;
+        }
+        #modeToggle {
+        padding: 0% 4px; /* Adjust padding to change button size */
+        font-size: 9px; /* Adjust font size */
+   border-color: wheat;
+   background-color: gold;
+   border-radius: 7%;
+    }
+    </style>
+</head>
+
+<body>
+    <!--Semantic tags are good for seo-->
+    <header>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+        <h2>Muzammil Alam</h2>
+    </main>
+    <footer>
+        &copy; Copyright Muzammil Beast | All rights reserved
+        <a target="_blank
+    " href="https://facebook.com">
+            <img width="30" src="https://cdn-icons-png.flaticon.com/512/179/179319.png">
+        </a>
+        <a target="_blank" href="https://youtube.com">
+            <img width="30" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+        </a>
+        <a target="_blank" href="https://instagram.com">
+            <img width="30"
+                src="pngwing.com.png">
+        </a>
+
+<!--Sementic tags were introduced in html 5 they were not a part of it before this-->
+    </footer>
+    <button width="5" id="modeToggle" onclick="toggleMode()">Dark Mode</button>
+
+    <script>
+        function toggleMode() {
+            var body = document.body;
+            var button = document.getElementById("modeToggle");
+            if (body.classList.contains("light-mode")) {
+                body.classList.remove("light-mode");
+                button.textContent = "Light Mode";
+            } else {
+                body.classList.add("light-mode");
+                button.textContent = "Dark Mode";
+            }
+        }
+    </script>
+</body>
+
+</html>
