@@ -1,8 +1,12 @@
 h1{
-    color: aqua;
+/* <!-- even important will make inline style even override it --> */
+     color: aqua /*!important; */
 }
 .yellow{
     color: yellow;
+}
+h1.cpurple{
+    color: cornflowerblue;
 }
 .cred{
     color: red;
@@ -13,3 +17,13 @@ h1{
 [data-x=a]{
     color: burlywood;
 }
+
+/* The specificity of Element selector is 1 */
+/* The specificity of class selector is 10 */
+/* The specificity of attribute selector is 10
+ */
+ /* important is 10000 */
+/* psuedo class also adds 10 */
+ /* when we do h1.yellow or something like htat then we add specificities
+ 
+ */
