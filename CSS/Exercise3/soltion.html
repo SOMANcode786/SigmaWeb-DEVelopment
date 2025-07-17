@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css position</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;   
+        }
+        .box1{
+            background-color: aqua;
+            position: relative;
+            top: 90px;
+            /*  by doing thsi in this sense we are basically making thsi element float on top of the display and which has the higher value of z index will be on top */
+        z-index: 1;
+        }
+        .box2{
+            background-color: burlywood;
+            position: relative;
+            z-index: 2;
+            top: 40px;
+        }
+        .box3{
+            background-color: cornsilk;
+            position: relative;
+            z-index: 3;
+        }
+        .box4{
+            background-color: firebrick;
+            position: relative;
+            z-index: 4;
+            bottom: 50px;
+            }
+        .box{
+            height: 133px;
+            width: 80vw;
+            padding: 3px;
+       
+            margin: 3px;
+            border: 2px solid black;
+            /*  remember possition properties */
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+
+</body>
+</html>
