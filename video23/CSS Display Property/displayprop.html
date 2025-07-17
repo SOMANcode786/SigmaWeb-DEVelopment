@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display property</title>
+    <style>
+        .box{
+            border: 2px solid blue;
+            /*  i wnat to make it n inline element */
+            display: inline;
+            padding: 20px;
+            /*  padding top and width or margins obey will not work if the element on the display is inline */
+        /*  to solve this */
+display: inline-block;
+/*  if i do display none then it will disappear along with everything*/
+display: none;
+/*  but if i do display invisible than its space will be still there butit will be hiden vissbbiluity hidde*/
+display: flex;
+justify-content: center;
+/*  more stuff to come */
+
+
+width: 433px;
+    }
+    </style>
+</head>
+<body><div class="box">
+    I am a box
+</div>
+<span>hello span boxer inline</span>
+<div class="box">Inline jitne bhi he  sare agye</div>
+    <!-- check kr rhe ho
+      -->
+</body>
+</html>
