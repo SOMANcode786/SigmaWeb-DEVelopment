@@ -5,12 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Variables</title>
     <style>
+        :root{
+            --color: blue;
+            --seccolor: rgb(127, 127, 199);
+            /* root ke andr kuch bhi hota he wo global variable hota he */
+            /*  we can also do for padding */
+            --defpad: 23px
+        }
         .nav{
             background-color: rgb(138, 216, 138);
+            /* instead we can use variables */
+            background-color: var(--color);
         }
         .container{
             background-color: rgb(30, 180, 30);
+            /* similarly */
+            background-color: var(--seccolor);
+
             
+        }
+        ul li{
+            list-style: none;
+            padding: 34px;
+            /* similarly for padding  */
+            padding: var(--defpad);
+        }
+        ul li:first-child{
+            --color: rgb(230, 129, 15);
+            /*  now this is local variable if we dfine local variable and we use it here then local variable value will be used even if the things are thee saame*/
+            background-color: var(--color);
+            /*  anlo color name ki koi value he hi ni to ham simple aise bhi kr skte hen as a fallback variable */
+            background-color: var(--seccdolor,orange);
+        }
+        ul{
+            display:flex;
+            /* ab ye jahan niche arhe the wo ab upar ayenge sort of inline hojayenge */
         }
 </style>
 </head>
