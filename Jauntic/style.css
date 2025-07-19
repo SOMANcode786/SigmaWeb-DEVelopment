@@ -2,6 +2,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+    transition: all 0.3s ease-in-out;
+
 }
 
 .nav {
@@ -10,6 +12,8 @@ body {
   padding: 10px 20px;
   /* background-color: #f8f9fa; */
     justify-content: space-around;
+    transition: all 0.3s ease-in-out;
+
 }
 
 .logo img {
@@ -23,6 +27,7 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+
 }
 
 .navthings li {
@@ -84,6 +89,7 @@ body {
 }
 .section1{
     display: flex;
+    height: 80vh;
 }
 .main1{
     width: 45%;
@@ -137,7 +143,235 @@ body {
 .main2{
     display: flex;
     flex-direction: column-reverse;
+    margin-bottom: 140px;
 }
 .main2 h2{
     width: 60%;
 }
+.section2{
+  margin-top: 50px;
+  transition: all 0.3s ease;
+
+}
+/* Services Container Row */
+/* ========= COMMON STYLES ========= */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+/* Service Card */
+.service-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Image */
+.service-card-bg-img {
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-card-bg-img {
+  transform: scale(1.05);
+}
+
+/* Overlay Text */
+.card-img-overlay {
+  padding: 0;
+  display: flex;
+  align-items: end;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+}
+
+/* Card Title */
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========= DARK THEME ========= */
+.dark-theme .row {
+  background-color: #121212;
+}
+
+.dark-theme .service-card {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+.dark-theme .service-card-bg-img {
+  filter: brightness(0.85);
+}
+
+.dark-theme .card-title {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========= LIGHT THEME ========= */
+.light-theme .row {
+  background-color: #f9f9f9;
+}
+
+.light-theme .service-card {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  color: #000;
+}
+
+.light-theme .service-card-bg-img {
+  filter: brightness(1);
+}
+
+.light-theme .card-title {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.section3{
+  width: 100%;
+  height: 20vh;
+  position: relative;
+}
+.section3 button{
+  text-decoration: none;
+    width: 200px;
+    height: 50px;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.section4{
+  height: 60vh;
+}
+#sap_video {
+  transition: background-color 0.4s ease, color 0.4s ease;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  min-height: 100vh; /* Full viewport height */
+}
+.videocenter{
+  margin-left: 20%;
+}
+
+/* Light mode */
+.light-theme #sap_video {
+  background-color: #f8f9fa;
+  color: #000;
+}
+
+/* Dark mode */
+.dark-theme #sap_video {
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Wrapper for responsive centered video */
+.video-wrapper {
+  width: 70vw;
+  max-width: 1000px;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Full-size iframe */
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  border-radius: 12px;
+}
+.section5 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.flexing{
+  display: flex;
+}
+/* Light mode styles */
+.light-theme .partners-card {
+  background-color: #f8f9fa;
+  color: #212529;
+  border: 1px solid #dee2e6;
+}
+
+.light-theme .partners-card .partner-link {
+  color: #0d6efd;
+}
+
+.light-theme .partners-card .overlay-bw {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 20%, rgba(248, 249, 250, 0.85) 100%);
+}
+
+/* Dark mode styles */
+.dark-theme .partners-card {
+  background-color: #212529;
+  color: #ffffff;
+  border: 1px solid #444;
+}
+
+.dark-theme .partners-card .partner-link {
+  color: #0d6efd;
+}
+
+.dark-theme .partners-card .overlay-bw {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, rgba(33, 37, 41, 0.85) 100%);
+}
+
+/* Ensure images are full-width and maintain aspect ratio */
+.partners-card .card-img {
+  object-fit: cover;
+  height: 100%;
+}
+
+/* Headline style */
+#partners h1 span.stylish-font {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+/* ========= RESPONSIVE ========= */
+@media (max-width: 768px) {
+  .service-card-bg-img {
+    height: 200px;
+  }
+  .video-wrapper {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 576px) {
+  .service-card-bg-img {
+    height: 180px;
+  }
+}
+

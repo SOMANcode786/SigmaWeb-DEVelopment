@@ -1,0 +1,91 @@
+<style type="text/css">
+  .dropdown:hover .dropdown-menu{
+    display: block;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-dark py-4">
+  <div class="container w-75 mx-auto">
+    <a class="navbar-brand text-secondary fw-bold fs-6" href="<?= site_url('Alrion'); ?>">
+      <img src="<?= base_url('assets/images/js-logo-1.png'); ?>" class="img-fluid" style="width: 40%;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list text-light"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-light fs-6 text-uppercase" href="<?= site_url('Alrion'); ?>">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light fs-6 text-uppercase" href="<?= site_url('Alrion/About'); ?>">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light fs-6 text-uppercase" href="<?= site_url('Alrion/Services'); ?>">Services</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link text-light fs-6 text-uppercase dropdown-toggle" href="<?= site_url('Alrion/Projects'); ?>" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </a>
+          <ul class="dropdown-menu rounded-1 bg-secondary" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="<?= site_url('Alrion/sap_business_one'); ?>">SAP Business One</a></li>
+            <li><a class="dropdown-item" href="#">ASAB ERP</a></li>
+            <li><a class="dropdown-item" href="#">Oracle NetSuite</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <div class="d-flex">
+        <a href="<?= site_url('Alrion/Contact'); ?>" class="btn btn-lg btn-outline-light">Contact Now</a>
+      </div> -->
+    </div>
+  </div>
+</nav>
+
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    var w = window.innerWidth;
+
+    if (w < 985) {
+      console.log(w);
+
+      // Disable navigation and toggle dropdowns on click
+      document.querySelectorAll(".nav-item.dropdown .nav-link.dropdown-toggle").forEach(function (toggleLink) {
+        toggleLink.addEventListener("click", function (e) {
+          e.preventDefault(); // prevent navigation
+          let parent = this.closest(".nav-item.dropdown");
+          let dropdownMenu = parent.querySelector(".dropdown-menu");
+
+          // Hide other open dropdowns
+          document.querySelectorAll(".nav-item.dropdown .dropdown-menu").forEach(function (menu) {
+            if (menu !== dropdownMenu) {
+              menu.classList.remove("show");
+            }
+          });
+
+          // Toggle current dropdown
+          dropdownMenu.classList.toggle("show");
+        });
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".nav-item.dropdown")) {
+          document.querySelectorAll(".dropdown-menu").forEach(function (menu) {
+            menu.classList.remove("show");
+          });
+        }
+      });
+    } else {
+      // On large screens, enable normal navigation for dropdown toggle links
+      document.querySelectorAll(".nav-link.dropdown-toggle").forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          const href = this.getAttribute('href');
+          if (href && href !== "#") {
+            window.location.href = href;
+          }
+        });
+      });
+    }
+  });
+</script>

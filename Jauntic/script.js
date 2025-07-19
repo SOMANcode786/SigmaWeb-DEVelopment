@@ -2,7 +2,8 @@ let icontheme = document.querySelector(".icontheme");
 let body = document.querySelector("body");
 let nav = document.querySelector(".nav");
 let navanchors = document.querySelectorAll(".theme1");
-let worktgt = document.querySelector(".main1 button");
+let worktgts = document.querySelectorAll(".worktgts");
+let html = document.querySelector(".light-theme");
     let flag = 0;
 
 
@@ -20,10 +21,15 @@ let worktgt = document.querySelector(".main1 button");
    
     });
 
+    worktgts.forEach(worktgt => {
 worktgt.style.color = "#f8f9fa";
       worktgt.style.backgroundColor = "#88b8e7ff"
       worktgt.classList.remove("btn-light");
   worktgt.classList.add("btn-dark");
+    });
+
+  html.classList.remove("light-theme");
+  html.classList.add("dark-theme");
     flag = 1;
 
     }
@@ -37,11 +43,14 @@ worktgt.style.color = "#f8f9fa";
    
 
     });
+    worktgts.forEach(worktgt => {
    worktgt.style.color = "#000707ff";
       worktgt.style.backgroundColor = "transparent";
        worktgt.classList.remove("btn-dark");
   worktgt.classList.add("btn-light");
-
+    });
+  html.classList.remove("dark-theme");
+ html.classList.add("light-theme");
     flag = 0;
     }
   
