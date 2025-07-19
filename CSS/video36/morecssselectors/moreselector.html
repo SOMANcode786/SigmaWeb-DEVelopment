@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Some important css selectors</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magicmouse.js/dist/magic-mouse.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magicmouse.js/dist/magicmouse.css" />
+  <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
+
+    <style>
+            body {
+    }
+        .box:first-child{
+            background-color: red;
+            /* iska ye mtlb ni he ke box ka first child utha kr uska bg red krdo iska ye mtlvb heke box agar first child heto to hi srf bg red krdi */
+    /* This doesn't mean select the first child *inside* .box.
+   It means apply styling only to .box if it’s the first child of its parent. */
+
+        }
+        .box:nth-child(2){
+            background-color: darkseagreen;
+            /* box class ka jo dusra element uthalo */
+        }
+        p::first-line{
+            color: yellow;
+            /* jo line first render horhi he usi se matlab he isko number of words in line doesnt matter */
+        }
+        .boxes{
+            background-color: floralwhite;
+            border: 2px solid black;
+        }
+        /* now similar to universal selector */
+        .boxes *{
+            margin: 22px;
+            border: 2px solid red;
+            /* boxes ke andr sare elemets ka property lagado */
+        }
+        .box:nth-child(odd){
+            background-color: magenta;
+        }
+
+/* nth last child se ham niche se select ==krte hen */
+/* .box:nth-last-child(1) neche se 1st select krlega */
+
+/* psuedo elements before and after */
+.boxes::before{
+    content: "Ye he before";
+}
+.boxes::after{
+    content: "ye hai after";
+}
+.boxes::selection{
+    color: rgb(6, 2, 241);
+    background-color: rgb(233, 134, 47);
+}
+.boxes::first-letter{
+    color: gold;
+}
+.box::first-letter{
+    color: rgb(219, 219, 41);
+    border: 1px solid black;
+    border-radius: 50%;
+    font-size: 50px;
+}
+
+input::placeholder{
+    color: blue;
+    font-weight:400;
+}
+
+
+    </style>
+</head>
+<body>
+    
+<div class="boxes">
+    <div class="box">I am a box</div>
+    <div class="box">I am a box</div>
+    <div class="box">I am a box</div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam voluptatem delectus impedit reprehenderit itaque dolorem dolor cumque neque enim cupiditate, ad expedita laborum dolorum, ab accusantium officiis quibusdam ex magni molestias aliquid ratione suscipit perferendis. Explicabo delectus a itaque quaerat laboriosam dolor, consectetur ab odio consequatur dolores sunt culpa rem omnis? Quam soluta cupiditate nisi dolorem similique. Inventore quia vitae quibusdam ea, mollitia enim voluptatibus incidunt quae reiciendis praesentium fugiat atque numquam neque doloremque quam fugit sequi.</p>
+</div>
+<input type="text" placeholder="Enter your name here">
+
+<!-- mouse -->
+ <script src="https://unpkg.com/kursor"></script>
+  <script>
+    new kursor({
+      type: 2,
+      color: '#00e1c9'
+    });
+  </script>
+</body>
+</html>
+
+</body>
+</html>

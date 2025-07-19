@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float and clear</title>
+    <style>
+        .cards{
+            border: 2px solid red;
+            display: flow-root;
+            /* container expand kr jayega */
+        }
+        img{
+            float: right;
+        }
+        /* float se wo jis bhi direction me flow kr rha eh wo allow krdega baki orjga ko content ko
+        secondly agr image ki propeerty set ni heto wo apne container se overflow krjayegi to solve this */
+    
+        
+    /* this was used in wrting blogs and newspapers previously now they are not used */
+   
+   .card:nth-child(4){
+    background-color: aqua;
+    /* aar ham clear lgayenge to browser ko jake bolega ke kch bhi hojaye mere right ya us direction mekoi bhi float na krr rha ho */
+    clear: right;
+}
+   
+   
+   </style>
+</head>
+<body>
+    <!-- float and clear not used muchn now  -->
+
+    <!-- because of flex -->
+     <div class="cards">
+        <img width="344px
+        " src="https://media.istockphoto.com/id/627795510/photo/example.jpg?s=612x612&w=0&k=20&c=lpUf5rjPVd6Kl_M6heqC8sUncR4FLmtsRzeYdTr5X_I=" alt="">
+        <!-- jab bhi ham float lgate hen to wo exceed slash overflow kr jata he from parent -->
+        <div class="card">Example 1</div>
+        <div class="card">Example 1</div>
+        <div class="card">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nostrum vitae ratione aperiam tempore fugiat, molestiae facere accusantium commodi, eum error impedit totam possimus, libero consectetur alias ea? Debitis eius enim voluptatem voluptates doloribus. Ea laboriosam maiores odio? Laborum tempore numquam delectus dolorem rerum beatae quidem quasi qui. Nihil cupiditate odio odit quis molestiae assumenda reiciendis nobis enim, sint esse, culpa, aut voluptatibus saepe. Maxime quibusdam eos nihil at molestiae eius officia officiis inventore et, voluptates, nulla nostrum quia illo adipisci quo, pariatur dolorum obcaecati eligendi harum similique sed assumenda accusamus doloremque? Eius veritatis natus explicabo ipsa, delectus labore tempore iure dicta ullam mollitia, quaerat aliquid exercitationem odit, fugit praesentium. Quas laudantium adipisci, vitae at rem neque aliquam saepe iusto ut distinctio numquam eligendi officia voluptates deleniti magni minus est corporis ex sequi, nisi consequuntur? Quibusdam placeat reprehenderit maiores voluptatem eum porro culpa blanditiis aliquid id, repellat libero excepturi aut, sit cumque omnis ex odio mollitia quaerat adipisci perspiciatis corporis illum dolore vitae saepe. Quasi, numquam debitis! Excepturi numquam itaque iure provident unde dignissimos iusto explicabo architecto neque rem doloribus labore non, maxime tenetur nihil repellat quae veritatis facilis ullam. Iure dicta soluta nemo? Libero error sunt, porro voluptas in quae eius suscipit cupiditate culpa deleniti numquam cumque, tempora autem, architecto eveniet repellendus nam molestias distinctio. Pariatur autem amet quidem voluptatum quasi suscipit unde voluptatibus hic distinctio rem quo omnis ut fugiat quam minus fuga quos voluptates doloremque inventore dignissimos, atque sed impedit laboriosam officiis? Architecto accusamus sunt at quas iusto tempore soluta qui, deserunt aliquid repellat consequatur corrupti labore cum tenetur minus praesentium natus fugit sapiente incidunt ducimus esse necessitatibus itaque voluptas culpa. Soluta magni explicabo quaerat laboriosam odio vel earum voluptatum dolorum iure. At suscipit, voluptates animi, consequuntur ipsa fugit quasi rerum veniam, velit maxime rem! Eos, voluptatibus laborum delectus minus voluptatem minima nemo? Dolore sapiente soluta animi delectus ut magnam, doloremque dolorem ex eum fugiat, facilis reprehenderit, modi explicabo eius aut neque laboriosam cumque. Nesciunt qui natus exercitationem quis provident.</div>
+     </div>
+</body>
+</html>
