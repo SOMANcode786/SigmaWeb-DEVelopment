@@ -1,3 +1,31 @@
+
+/* Base Theme Variables */
+:root {
+  --section-bg: #ffffff;
+  --card-bg: #f9f9f9;
+  --card-border: #ddd;
+  --text-primary: #212529;
+  --text-secondary: #333;
+  --accent-color: #0d6efd;
+  --border-muted: #ccc;
+    --card-hover-bg: #e9e9e9;
+
+}
+
+/* Dark Theme Overrides */
+.dark-theme {
+  --section-bg: #121212;
+  --card-bg: #1e1e1e;
+  --card-border: #333;
+  --text-primary: #e0e0e0;
+  --text-secondary: #ffffff;
+  --accent-color: #88b8e7;
+  --border-muted: #444;
+    --card-hover-bg: #d41616;
+
+}
+
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -109,6 +137,7 @@ body {
     cursor: pointer;
     background-color: transparent;
     border-radius: 10px;
+    border: none;
 }
 /* Light mode button */
 .btn-light {
@@ -175,6 +204,9 @@ body {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
+
+
+
 
 /* Card Image */
 .service-card-bg-img {
@@ -276,9 +308,7 @@ body {
   padding-bottom: 2rem;
   min-height: 100vh; /* Full viewport height */
 }
-.videocenter{
-  margin-left: 20%;
-}
+
 
 /* Light mode */
 .light-theme #sap_video {
@@ -315,9 +345,7 @@ body {
   padding-bottom: 4rem;
   margin-top: 60px;
 }
-.flexing{
-  display: flex;
-}
+
 /* Light mode styles */
 .light-theme .partners-card {
   background-color: #f8f9fa;
@@ -325,8 +353,9 @@ body {
   border: 1px solid #dee2e6;
 }
 
-.light-theme .partners-card .partner-link {
+.light-theme .partners-card  {
   color: #0d6efd;
+  text-align: center;
 }
 
 .light-theme .partners-card .overlay-bw {
@@ -360,6 +389,237 @@ body {
   font-weight: 600;
   letter-spacing: 1px;
 }
+
+/* === Section6 - Client Reviews === */
+.section6 {
+  padding: 4rem 2rem;
+  background-color: var(--section-bg);
+  transition: background-color 0.3s ease;
+}
+
+/* CLIENT REVIEWS Heading */
+.section6 p.fw-bold {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+/* REVIEW CARD */
+.review-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1rem;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+/* Client Text */
+.review-card .fst-italic {
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.review-icon:hover{
+transition: all 0.9s ease-in-out;
+}
+/* Review Icon */
+.review-icon {
+  color: var(--accent-color);
+  transition: transform 0.3s ease;
+}
+
+.review-icon:hover {
+  transform: scale(1.15);
+}
+
+/* Client Image */
+.client-image {
+  max-width: 100px;
+  height: auto;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Borders Between Cards */
+.section6 .border-bottom {
+  border-color: var(--border-muted) !important;
+}
+.section6-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.section6-header {
+  flex: 1;
+}
+
+.section6-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Layout for review card */
+.section6-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.review-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-person,
+.review-text,
+.review-meta {
+  flex: 1 1 100%;
+}
+
+@media (min-width: 768px) {
+  .review-person,
+  .review-text,
+  .review-meta {
+    flex: 1 1 30%;
+  }
+
+  .review-text {
+    flex: 1 1 40%;
+  }
+
+  .review-meta {
+    text-align: right;
+  }
+}
+
+/* Divider */
+.review-divider {
+  border: 0;
+  height: 1px;
+  background-color: var(--border-muted);
+}
+/* Apply theme variables to the pricing section */
+.section7{
+  width: 100%;
+}
+#pricing {
+  width: 100%;
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+#pricing h1 {
+  color: var(--text-primary);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+#pricing p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+#pricing .stylish-font {
+  color: var(--accent-color);
+  font-family: 'Pacifico', cursive; /* or any other stylish font you're using */
+  font-weight: 500;
+}
+
+/* Section 8: Latest Blog */
+.section8 {
+  padding: 3rem 0;
+}
+
+/* Blog Card Styling */
+/* Section 8 (Blogs) - Light/Dark Theme Support */
+.section8 {
+  background-color: var(--section-bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding-bottom: 3rem;
+}
+
+.section8 .row > .col-12.col-lg-6 {
+  color: var(--text-primary);
+}
+
+/* Heading Styles */
+.section8 p.fw-bold {
+  color: var(--text-primary);
+}
+
+.section8 h1 {
+  color: var(--text-primary);
+}
+
+.section8 .stylish-font {
+  color: var(--accent-color);
+}
+
+/* Blog Cards Container */
+.blog-cards {
+  margin-top: 2rem;
+}
+
+/* Blog Card Styles */
+.blog-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 100%;
+  color: var(--text-primary);
+}
+
+/* Blog Card Hover */
+.blog-card:hover {
+  background-color: var(--card-hover-bg);
+  transform: translateY(-4px);
+}
+
+/* Blog Card Image */
+.blog-card img {
+  border: 1px solid var(--border-muted);
+  object-fit: cover;
+}
+
+/* Blog Card Content */
+.blog-card .card-body p,
+.blog-card .card-body h2,
+.blog-card .card-body small {
+  color: var(--text-primary);
+}
+
+.blog-card .card-body p.text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+/* Icon inside card */
+.blog-card .bi-arrow-right {
+  color: var(--accent-color);
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover .bi-arrow-right {
+  transform: translateX(5px);
+}
+
 /* ========= RESPONSIVE ========= */
 @media (max-width: 768px) {
   .service-card-bg-img {
