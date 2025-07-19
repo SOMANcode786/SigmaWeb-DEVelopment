@@ -1,0 +1,143 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  /* background-color: #f8f9fa; */
+    justify-content: space-around;
+}
+
+.logo img {
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.navthings {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navthings li {
+  position: relative;
+  margin: 0 10px;
+
+}
+
+.navthings a {
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 10px 15px;
+  display: block;
+}
+
+.navthings a:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -10%;
+  background-color: #6c757d;
+  border-radius: 8px;
+  min-width: 150px;
+  padding: 0;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.dropdown-menu li {
+  margin: 0;
+  list-style: none;
+}
+
+.dropdown-menu a {
+  color: white;
+  padding: 10px 15px;
+}
+
+.dropdown-menu a:hover {
+  background-color: #5a6268;
+}
+
+/* Show dropdown on hover */
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
+
+.icontheme{
+    width: 30px;
+    height: auto;
+    transition: all 0.3s ease-in-out;
+}
+.section1{
+    display: flex;
+}
+.main1{
+    width: 45%;
+    padding-left: 200px;
+}
+.main1 h1{
+    font-size: 90px;
+}
+.main1 button{
+    text-decoration: none;
+    width: 200px;
+    height: 50px;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 10px;
+}
+/* Light mode button */
+.btn-light {
+  color: #000707;
+  background-color: transparent;
+  transition: all 0.3s ease;
+    box-shadow: 3px 2px 13px black;
+
+}
+
+.btn-light:hover {
+  box-shadow: -2px 6px 23px black;
+}
+
+/* Dark mode button */
+.btn-dark {
+  color: #f8f9fa;
+  background-color: #88b8e7ff;
+  transition: all 0.3s ease;
+    box-shadow: 3px 2px 13px white;
+
+}
+
+.btn-dark:hover {
+  box-shadow: -2px 6px 23px white;
+
+}
+
+
+
+
+.main2{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.main2 h2{
+    width: 60%;
+}

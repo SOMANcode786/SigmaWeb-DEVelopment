@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media qry</title>
+    <style>
+        body{
+            background-color: red;
+        }
+
+        @media only screen and (max-width: 455px){
+            /* kuch asise parameters hote hen not ya only simply speaking 
+            only ka mtlb he ke  srf ye hoto dikhao not ka mtl he ye na hoto dikhao */
+        /* speach or aisi chize bh hoti hen */
+        body{
+            background-color: blue;
+            /* 455 pixels se choti screen hogi to ye style lg jayega */
+        }
+        }
+        /* @media only screen and (max-width:455px){
+            .container{
+            flex-direction: column;
+
+            }
+        } */
+         /* instead of the abpve we can also target my orientation */
+       @media only screen and (orientation: portrait){
+            .container{
+            flex-direction: column;
+
+            }
+        } 
+         .container{
+            display: flex;
+        }
+        .boxes{
+            width: 344px;
+            height: 244px;
+            background-color: burlywood;
+            padding: 3px;
+            margin: 6px;
+            border: 2px solid purple;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        Hey I ama red body guy
+    </div>
+    <div class="container">
+<div class="boxes"></div>
+    <div class="boxes"></div>
+    <div class="boxes"></div>
+    <div class="boxes"></div>
+    </div>
+    
+
+</body>
+</html>
