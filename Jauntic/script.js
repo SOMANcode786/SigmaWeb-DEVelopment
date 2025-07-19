@@ -15,11 +15,15 @@ let worktgt = document.querySelector(".main1 button");
           nav.style.backgroundColor = "#000000ff";
           navanchors.forEach(anchor => {
       anchor.style.color = "#f8f9fa";
-      worktgt.style.color = "#f8f9fa";
-      worktgt.style.backgroundColor = "#88b8e7ff"
+      
+
+   
     });
 
-
+worktgt.style.color = "#f8f9fa";
+      worktgt.style.backgroundColor = "#88b8e7ff"
+      worktgt.classList.remove("btn-light");
+  worktgt.classList.add("btn-dark");
     flag = 1;
 
     }
@@ -30,12 +34,13 @@ let worktgt = document.querySelector(".main1 button");
           nav.style.backgroundColor = "#f8f9fa";
  navanchors.forEach(anchor => {
       anchor.style.color = "#000707ff";
-      worktgt.style.color = "#000707ff";
-      worktgt.style.backgroundColor = "transparent"
-      worktgt.style.box-shadow
+   
 
     });
-
+   worktgt.style.color = "#000707ff";
+      worktgt.style.backgroundColor = "transparent";
+       worktgt.classList.remove("btn-dark");
+  worktgt.classList.add("btn-light");
 
     flag = 0;
     }
