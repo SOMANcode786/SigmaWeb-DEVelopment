@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 5</title>
+    <style>
+    :root {
+  /* Base Colors */
+  --primary-color: #c9c7c7;
+  --secondary-color: #f5f5f5;
+  --accent-color: #007BFF; /* Soft Blue */
+  --accent-color-hover: #0056b3;
+
+  /* Text Colors */
+  --text-color: #1e1e1e;
+  --muted-text-color: #555;
+
+  /* Border & Shadow */
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+
+  /* UI Components */
+  --button-bg: #007BFF;
+  --button-text: #ffffff;
+  --input-bg: #ffffff;
+  --input-text: #1e1e1e;
+  --card-bg: #ffffff;
+  --scrollbar-thumb: #cccccc;
+  /* glassmorph */
+ --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  /* Status Colors */
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --warning-color: #ffc107;
+  /* lineargrad */
+  --gradient-1: linear-gradient(135deg, #0077ff 0%, #00e1c9 100%);
+
+}
+
+
+.dark-theme {
+  /* Base Colors */
+  --primary-color: #121212;
+  --secondary-color: #1e1e1e;
+  --accent-color: #66b2ff;
+  --accent-color-hover: #3399ff;
+
+  /* linear grad */
+  --gradient-1: linear-gradient(135deg, #00e1c9 0%, #0077ff 100%);
+
+  /* Text Colors */
+  --text-color: #f1f1f1;
+  --muted-text-color: #aaa;
+  /* glassmorp */
+  --glass-bg: rgba(0, 0, 0, 0.3);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  /* Border & Shadow */
+  --border-color: #333;
+  --shadow-color: rgba(255, 255, 255, 0.05);
+
+  /* UI Components */
+  --button-bg: #66b2ff;
+  --button-text: #121212;
+  --input-bg: #1e1e1e;
+  --input-text: #f1f1f1;
+  --card-bg: #1a1a1a;
+  --scrollbar-thumb: #444;
+
+  /* Status Colors */
+  --success-color: #28d17c;
+  --error-color: #ff6b6b;
+  --warning-color: #ffd166;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--primary-color);
+  overflow-x: hidden;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+.glassmorphism {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(30px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  position: sticky;
+}
+    nav{
+        display: flex;
+        list-style: none;
+        padding: 20px;
+        margin-bottom: 8px;
+    }
+    nav li{
+        padding: 10px;
+        color: var(--text-color);
+
+
+    }
+    nav li:hover{
+        color:var(--accent-color-hover);
+        cursor: pointer;
+    }
+     .main{
+        padding: 10px;
+        width: 90;
+        display: flex;
+        flex-direction: ;
+        height: 70vh;
+        background-color: var(--secondary-color);
+        border-radius: 20px;
+        
+
+    }
+    .main1{
+        width: 40%;
+        height: 50vh;
+        background: var(--primary-color);
+        margin: auto;
+        border-radius: 20px;
+        box-shadow: 5px 10px 33px 2px var(--text-color);
+  border: 3px solid var(--glass-border);
+        padding: 10px;
+        color: var(--muted-text-color);
+    font-size: 25px;
+
+    }
+
+      .main2
+      {
+        width: 45%;
+        min-height: 40vh;
+        height: 49vh;
+        padding: 1rem;
+        backdrop-filter: blur(60px) saturate(160%);
+  -webkit-backdrop-filter: blur(70px) saturate(160%);
+        background: var(--primary-color);
+        margin: auto;
+        border-radius: 30px;
+        box-shadow: 5px 10px 23px 2px var(--text-color);
+  border: 3px solid var(--glass-border);
+color:var(--muted-text-color);
+    font-size: 25px;
+    }
+    .hovering{
+          transition: all 0.2s ease-in-out;
+
+    }
+.hovering:hover{
+        box-shadow: 5px 10px 23px 2px var(--accent-color-hover);
+        transform: scale(1.04);
+
+}
+.heading{
+    background-image: var(--gradient-1);
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    font-size: 40px;
+}
+.buttonlearn{
+padding: 10px;
+border: none;
+background-color: var(--button-bg);
+color: var(--button-text);
+font-weight: 300;
+font-size: 25px;
+margin-top: 20px;
+margin-left: 35%;
+border-radius: 10px;
+
+}
+    </style>
+</head>
+<body>
+        <nav class="navbar glassmorphism">
+            
+                <li>Home</li>
+                <li>Services</li>
+                <li>Contact</li>
+            
+        </nav>
+        <div class="main">
+            <div class="main1 hovering">
+                <h1 class="heading">Discover the Future of Web Design</h1>
+  <p>At Jaunt, we blend innovation with creativity to craft websites that are fast, responsive, and visually stunning. Whether you're a startup or an enterprise, we've got you covered.</p>
+  <ul>
+    <li>🚀 Lightning-fast performance</li>
+    <li>🎨 Stunning, modern UI/UX</li>
+    <li>🔒 Secure and scalable solutions</li>
+  </ul>
+  <button class="buttonlearn">Learn More</button>
+            </div>
+            <div class="main2 hovering">
+                 <h2 class="heading">Our Recent Projects</h2>
+  <div>
+    <h3>Portfolio Website</h3>
+    <p>A minimal and sleek personal portfolio built with HTML, CSS, and JavaScript.</p>
+  </div>
+  <div>
+    <h3>E-commerce Dashboard</h3>
+    <p>A responsive admin panel with real-time sales charts and product analytics.</p>
+  </div>
+  <div>
+    <h3>Blog Platform</h3>
+    <p>A content-focused blogging platform with markdown support and dark mode.</p>
+  </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Welcome to Sigma Web Development Express</h2>
+
+        </div>
+        <footer></footer>
+
+</body>
+</html>
