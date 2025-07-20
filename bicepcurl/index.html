@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bicep Curl Counter</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection@2.0.0/dist/pose-detection.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>Bicep Curl Counter</h1>
+            <div class="status-info">
+                <div class="status-item">
+                    <span class="status-label">Status:</span>
+                    <span id="status" class="status status--info">Initializing...</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">FPS:</span>
+                    <span id="fps" class="fps-display">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Video Section -->
+            <div class="video-section">
+                <div class="video-container">
+                    <video id="video" autoplay muted playsinline></video>
+                    <canvas id="canvas"></canvas>
+                </div>
+                <div id="loading" class="loading-overlay">
+                    <div class="loading-spinner"></div>
+                    <p id="loadingText">Loading TensorFlow.js model...</p>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls and Stats -->
+            <div class="controls-section">
+                <div class="stats-grid">
+                    <!-- Left Arm Stats -->
+                    <div class="stat-card">
+                        <h3>Left Arm</h3>
+                        <div class="stat-value" id="leftCount">0</div>
+                        <div class="stat-label">Reps</div>
+                        <div class="angle-display">
+                            <span class="angle-label">Angle:</span>
+                            <span id="leftAngle" class="angle-value">--°</span>
+                        </div>
+                        <div class="state-indicator">
+                            <span class="state-label">State:</span>
+                            <span id="leftState" class="state-value">Ready</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Arm Stats -->
+                    <div class="stat-card">
+                        <h3>Right Arm</h3>
+                        <div class="stat-value" id="rightCount">0</div>
+                        <div class="stat-label">Reps</div>
+                        <div class="angle-display">
+                            <span class="angle-label">Angle:</span>
+                            <span id="rightAngle" class="angle-value">--°</span>
+                        </div>
+                        <div class="state-indicator">
+                            <span class="state-label">State:</span>
+                            <span id="rightState" class="state-value">Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="button-group">
+                    <button id="resetBtn" class="btn btn--secondary">Reset Counters</button>
+                    <button id="toggleCamera" class="btn btn--outline">Toggle Camera</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Instructions -->
+        <section class="instructions">
+            <h3>Instructions</h3>
+            <ul>
+                <li>Position yourself in front of the camera with both arms visible</li>
+                <li>Perform bicep curls - extend arm down (>150°) then curl up (<60°)</li>
+                <li>Each complete rep will be counted and a beep will sound</li>
+                <li>Left and right arm reps are counted separately</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Audio element for beep sound -->
+    <audio id="beepSound" preload="auto">
+        <source src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" type="audio/ogg">
+    </audio>
+
+    <script src="app.js"></script>
+</body>
+</html>

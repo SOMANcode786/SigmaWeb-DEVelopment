@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Bicep Curl Counter</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- TensorFlow.js and Pose Detection -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection@2.0.0/dist/pose-detection.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-main">
+                <h1>AI Bicep Curl Counter</h1>
+                <div class="status-badge">
+                    <span id="status" class="status status--info">Initializing...</span>
+                </div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Model:</span>
+                    <span id="currentModel" class="stat-value">Loading...</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">FPS:</span>
+                    <span id="fps" class="stat-value fps-display">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Device:</span>
+                    <span id="deviceType" class="stat-value">Detecting...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <main class="main-grid">
+            <!-- Video Section -->
+            <section class="video-section">
+                <div class="video-container">
+                    <video id="video" autoplay muted playsinline></video>
+                    <canvas id="canvas"></canvas>
+                    <div id="loading" class="loading-overlay">
+                        <div class="loading-content">
+                            <div class="loading-spinner"></div>
+                            <p id="loadingText">Initializing TensorFlow.js...</p>
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div id="progressFill" class="progress-fill"></div>
+                                </div>
+                                <span id="progressText" class="progress-text">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Workout Controls -->
+                <div class="workout-controls">
+                    <button id="startWorkout" class="btn btn--primary btn--lg">
+                        <span class="btn-icon">▶</span>
+                        Start Workout
+                    </button>
+                    <button id="stopWorkout" class="btn btn--outline btn--lg" disabled>
+                        <span class="btn-icon">⏸</span>
+                        Stop Workout
+                    </button>
+                </div>
+            </section>
+
+            <!-- Stats and Controls -->
+            <aside class="controls-panel">
+                <!-- Rep Counters -->
+                <div class="stats-section">
+                    <h3>Rep Counters</h3>
+                    <div class="arm-stats">
+                        <!-- Left Arm -->
+                        <div class="arm-card left-arm-card">
+                            <div class="arm-header">
+                                <h4>Left Arm</h4>
+                                <div class="arm-indicator left-indicator"></div>
+                            </div>
+                            <div class="rep-count" id="leftCount">0</div>
+                            <div class="arm-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Angle:</span>
+                                    <span id="leftAngle" class="detail-value angle-value">--°</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">State:</span>
+                                    <span id="leftState" class="detail-value state-value ready">Ready</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Arm -->
+                        <div class="arm-card right-arm-card">
+                            <div class="arm-header">
+                                <h4>Right Arm</h4>
+                                <div class="arm-indicator right-indicator"></div>
+                            </div>
+                            <div class="rep-count" id="rightCount">0</div>
+                            <div class="arm-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Angle:</span>
+                                    <span id="rightAngle" class="detail-value angle-value">--°</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">State:</span>
+                                    <span id="rightState" class="detail-value state-value ready">Ready</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Session Stats -->
+                <div class="session-section">
+                    <h3>Session Stats</h3>
+                    <div class="session-stats">
+                        <div class="session-stat">
+                            <span class="session-label">Total Reps:</span>
+                            <span id="totalReps" class="session-value">0</span>
+                        </div>
+                        <div class="session-stat">
+                            <span class="session-label">Duration:</span>
+                            <span id="sessionTime" class="session-value">00:00</span>
+                        </div>
+                        <div class="session-stat">
+                            <span class="session-label">Avg FPS:</span>
+                            <span id="avgFps" class="session-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings -->
+                <div class="settings-section">
+                    <h3>Settings</h3>
+                    
+                    <!-- Model Selection -->
+                    <div class="form-group">
+                        <label class="form-label" for="modelSelect">Pose Model:</label>
+                        <select id="modelSelect" class="form-control">
+                            <option value="auto">Auto (Recommended)</option>
+                            <option value="movenet-lightning">MoveNet Lightning (Fast)</option>
+                            <option value="movenet-thunder">MoveNet Thunder (Accurate)</option>
+                            <option value="blazepose">BlazePose (Advanced)</option>
+                        </select>
+                    </div>
+
+                    <!-- Audio Settings -->
+                    <div class="form-group">
+                        <label class="form-label" for="volumeSlider">Audio Volume:</label>
+                        <div class="slider-container">
+                            <input type="range" id="volumeSlider" class="slider" min="0" max="100" value="50">
+                            <span id="volumeValue" class="slider-value">50%</span>
+                        </div>
+                    </div>
+
+                    <!-- Smoothing Settings -->
+                    <div class="form-group">
+                        <label class="form-label" for="smoothingSlider">Pose Smoothing:</label>
+                        <div class="slider-container">
+                            <input type="range" id="smoothingSlider" class="slider" min="1" max="10" value="5">
+                            <span id="smoothingValue" class="slider-value">5</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="button-group">
+                        <button id="resetCounters" class="btn btn--secondary">Reset Counters</button>
+                        <button id="toggleCamera" class="btn btn--outline">Toggle Camera</button>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Instructions -->
+        <section class="instructions-section">
+            <div class="instructions-card">
+                <h3>How to Use</h3>
+                <div class="instructions-grid">
+                    <div class="instruction-item">
+                        <div class="instruction-number">1</div>
+                        <div class="instruction-text">
+                            <h4>Position Yourself</h4>
+                            <p>Stand in front of the camera with both arms clearly visible</p>
+                        </div>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="instruction-number">2</div>
+                        <div class="instruction-text">
+                            <h4>Start Workout</h4>
+                            <p>Click "Start Workout" to begin pose detection and rep counting</p>
+                        </div>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="instruction-number">3</div>
+                        <div class="instruction-text">
+                            <h4>Perform Bicep Curls</h4>
+                            <p>Extend your arm down (>150°) then curl up (<60°) for a complete rep</p>
+                        </div>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="instruction-number">4</div>
+                        <div class="instruction-text">
+                            <h4>Listen for Beeps</h4>
+                            <p>A beep sound will play for each successful rep completion</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
