@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bicep Curl Counter</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      color: white;
+      font-family: sans-serif;
+    }
+    video, canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 1;
+    }
+    .info {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 12px;
+      z-index: 2;
+    }
+    .info p {
+      margin: 6px 0;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="info">
+    <p><strong>LEFT ARM CURLS:</strong> <span id="left-count">0</span></p>
+    <p>Left Angle: <span id="left-angle">0</span>°</p>
+    <p><strong>RIGHT ARM CURLS:</strong> <span id="right-count">0</span></p>
+    <p>Right Angle: <span id="right-angle">0</span>°</p>
+  </div>
+
+  <video id="video" autoplay playsinline muted></video>
+  <canvas id="canvas"></canvas>
+  <audio id="beep" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+  <script>
+    const video = document.getElementById("video");
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const leftCountDisplay = document.getElementById("left-count");
+    const rightCountDisplay = document.getElementById("right-count");
+    const leftAngleDisplay = document.getElementById("left-angle");
+    const rightAngleDisplay = document.getElementById("right-angle");
+    const beep = document.getElementById("beep");
+
+    let leftCount = 0, rightCount = 0;
+    let leftDown = false, rightDown = false;
+
+    const UP_THRESHOLD = 40;
+    const DOWN_THRESHOLD = 160;
+
+    function getAngle(a, b, c) {
+      const ab = Math.atan2(a.y - b.y, a.x - b.x);
+      const cb = Math.atan2(c.y - b.y, c.x - b.x);
+      let angle = Math.abs(ab - cb) * 180 / Math.PI;
+      if (angle > 180) angle = 360 - angle;
+      return angle;
+    }
+
+    async function setupCamera() {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      video.srcObject = stream;
+      return new Promise((resolve) => video.onloadedmetadata = resolve);
+    }
+
+    async function main() {
+      await setupCamera();
+
+      const detector = await poseDetection.createDetector(
+        poseDetection.SupportedModels.MoveNet,
+        { modelType: poseDetection.movenet.modelType.SINGLEPOSE_LIGHTNING }
+      );
+
+      async function detect() {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const poses = await detector.estimatePoses(video);
+        if (poses.length > 0) {
+          const kp = poses[0].keypoints;
+
+          const ls = kp[5], le = kp[7], lw = kp[9];
+          const rs = kp[6], re = kp[8], rw = kp[10];
+
+          const minScore = 0.5;
+
+          if ([ls, le, lw].every(p => p.score > minScore)) {
+            drawArm(ls, le, lw);
+            const angle = getAngle(ls, le, lw);
+            leftAngleDisplay.textContent = Math.round(angle);
+
+            if (angle > DOWN_THRESHOLD) leftDown = true;
+            if (angle < UP_THRESHOLD && leftDown) {
+              leftCount++;
+              leftCountDisplay.textContent = leftCount;
+              beep.play();
+              leftDown = false;
+            }
+          }
+
+          if ([rs, re, rw].every(p => p.score > minScore)) {
+            drawArm(rs, re, rw);
+            const angle = getAngle(rs, re, rw);
+            rightAngleDisplay.textContent = Math.round(angle);
+
+            if (angle > DOWN_THRESHOLD) rightDown = true;
+            if (angle < UP_THRESHOLD && rightDown) {
+              rightCount++;
+              rightCountDisplay.textContent = rightCount;
+              beep.play();
+              rightDown = false;
+            }
+          }
+        }
+
+        requestAnimationFrame(detect);
+      }
+
+      detect();
+    }
+
+    function drawArm(s, e, w) {
+      ctx.strokeStyle = "lime";
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(s.x, s.y);
+      ctx.lineTo(e.x, e.y);
+      ctx.lineTo(w.x, w.y);
+      ctx.stroke();
+
+      [s, e, w].forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+        ctx.fillStyle = "cyan";
+        ctx.fill();
+      });
+    }
+
+    main();
+  </script>
+</body>
+</html>
